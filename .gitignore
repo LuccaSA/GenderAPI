@@ -1,2 +1,10 @@
 /.vs
 /GenderAPI/obj
+/GenderAPI.Domain/bin
+/GenderAPI.Domain/obj
+/GenderAPI.Infra/bin
+/GenderAPI.Infra/obj
+/GenderAPI.Tests/bin
+/GenderAPI.Tests/obj
+/Web/bin
+/Web/obj

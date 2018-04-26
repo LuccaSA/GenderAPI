@@ -16,4 +16,9 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GenderAPI.Domain\GenderAPI.Domain.csproj" />
+    <ProjectReference Include="..\GenderAPI.Infra\GenderAPI.Infra.csproj" />
+  </ItemGroup>
+
 </Project>

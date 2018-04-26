@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GenderAPI.Domain;
+using GenderAPI.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +26,9 @@ namespace GenderAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            var filePath = "C:\\Lucca\\2018 - SWE Nantes\\GenderAPI\\Data\\unique_genders.csv";
+            services.AddScoped<IFirstNamesDictionary>((provider) => new CsvToNamesDictionary(filePath));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
