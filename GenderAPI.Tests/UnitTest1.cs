@@ -43,19 +43,24 @@ namespace GenderAPI.Tests
         public void Toto()
         {
             var python = "C:\\Users\\Nfaugout\\AppData\\Local\\Programs\\Python\\Python36\\python.exe";
-            var file = "C:\\Lucca\\2018 - SWE Nantes\\GenderMachine\\hello.py";
+            var file = "C:\\Lucca\\genderService.py";
             var cmd = "C:\\Windows\\System32\\cmd.exe";
 
             ProcessStartInfo start = new ProcessStartInfo();
-            start.FileName = cmd;
-            start.Arguments = string.Format("{0} {1}", file, "C:\\Lucca\\2018 - SWE Nantes\\GenderMachine\\hello.py");
+            start.FileName = python;
+            start.Arguments = string.Format("{0} {1}", file, "Marie");//, "C:\\Lucca\\2018 - SWE Nantes\\GenderMachine\\hello.py");
             start.UseShellExecute = false;
+            start.CreateNoWindow = true;
             start.RedirectStandardOutput = true;
+            start.RedirectStandardError = true;
             using (Process process = Process.Start(start))
             {
                 using (StreamReader reader = process.StandardOutput)
                 {
-                    Assert.NotEmpty(reader.ReadToEnd());
+                    string stderr = process.StandardError.ReadToEnd(); // Here are the exceptions from our Python script
+                    string result = reader.ReadToEnd(); // Here is the result of StdOut(for example: print "test")
+
+                    Assert.NotEmpty(result);
                 }
             }
 
