@@ -11,9 +11,9 @@ namespace GenderAPI.Controllers
     [Route("api/[controller]")]
     public class GendersController : Controller
     {
-        private IFirstNamesDictionary _firstNamesDictionary;
+        private IGenderService _firstNamesDictionary;
 
-        public GendersController(IFirstNamesDictionary firstNamesDictionary)
+        public GendersController(IGenderService firstNamesDictionary)
         {
             _firstNamesDictionary = firstNamesDictionary;
         }

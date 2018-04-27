@@ -27,8 +27,10 @@ namespace GenderAPI
         {
             services.AddMvc();
 
-            var filePath = "C:\\Lucca\\2018 - SWE Nantes\\GenderAPI\\Data\\unique_genders.csv";
-            services.AddScoped<IFirstNamesDictionary>((provider) => new CsvToNamesDictionary(filePath));
+            //var csvFilePath = "C:\\Lucca\\2018 - SWE Nantes\\GenderAPI\\Data\\unique_genders.csv";
+            var pythonFilePath = "C:\\Lucca\\2018 - SWE Nantes\\GenderMachine\\genderService.py";
+
+            services.AddScoped<IGenderService>((provider) => new MachineLearningService(pythonFilePath));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

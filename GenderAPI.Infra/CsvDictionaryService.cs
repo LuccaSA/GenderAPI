@@ -6,22 +6,37 @@ using System.Linq;
 
 namespace GenderAPI.Infra
 {
-    public class CsvToNamesDictionary : IFirstNamesDictionary
+    public class CsvDictionaryService : IGenderService
     {
         private string _filePath;
 
-        public CsvToNamesDictionary(string filePath)
+        public CsvDictionaryService(string filePath)
         {
             _filePath = filePath;
         }
 
         private const char CSVDelimiter = ';';
 
-        public Dictionary<string, string> FirstNamesToGender
+        public decimal MaleProbability(string firstName)
         {
-            get
+            var dico = ReadCSVFile(_filePath, CSVDelimiter);
+
+            if (dico.ContainsKey(firstName))
             {
-                return ReadCSVFile(_filePath, CSVDelimiter);
+                var mrOrMs = dico[firstName];
+
+                if (mrOrMs == "Mr")
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            else
+            {
+                return 0.5M;
             }
         }
 
