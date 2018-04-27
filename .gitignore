@@ -8,3 +8,7 @@
 /GenderAPI.Tests/obj
 /Web/bin
 /Web/obj
+/publish
+/Web/Properties/PublishProfiles/*.pubxml
+/Web/Properties/PublishProfiles/*.user
+/Web/*.user
