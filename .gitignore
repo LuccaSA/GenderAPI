@@ -12,3 +12,4 @@
 /Web/Properties/PublishProfiles/*.pubxml
 /Web/Properties/PublishProfiles/*.user
 /Web/*.user
+/Web/appsettings.json
