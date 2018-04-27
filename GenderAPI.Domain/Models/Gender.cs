@@ -1,6 +1,4 @@
-﻿using GenderAPI.Domain;
-
-namespace GenderAPI.Web.Models
+﻿namespace GenderAPI.Domain.Models
 {
     public class Gender
     {

@@ -1,25 +1,26 @@
 ﻿using GenderAPI.Domain;
+using GenderAPI.Infra.Config;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace GenderAPI.Infra
+namespace GenderAPI.Infra.Services
 {
     public class CsvDictionaryService : IGenderService
     {
-        private string _filePath;
-
-        public CsvDictionaryService(string filePath)
-        {
-            _filePath = filePath;
-        }
-
         private const char CSVDelimiter = ';';
+        private IOptions<AppSettings> _appSettings;
+
+        public CsvDictionaryService(IOptions<AppSettings> appSettings)
+        {
+            _appSettings = appSettings;
+        }
 
         public decimal MaleProbability(string firstName)
         {
-            var dico = ReadCSVFile(_filePath, CSVDelimiter);
+            var dico = ReadCSVFile(_appSettings.Value.Csv.PathToVocabulary, CSVDelimiter);
 
             if (dico.ContainsKey(firstName))
             {
@@ -50,7 +51,7 @@ namespace GenderAPI.Infra
             int columnCount = 0;
 
             // Read the file and display it line by line.  
-            using (StreamReader file = new System.IO.StreamReader(filename))
+            using (StreamReader file = new StreamReader(filename))
             {
                 while ((line = file.ReadLine()) != null)
                 {

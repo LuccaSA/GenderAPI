@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GenderAPI.Domain;
-using GenderAPI.Infra;
+﻿using GenderAPI.Domain;
+using GenderAPI.Infra.Config;
+using GenderAPI.Infra.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace GenderAPI
 {
@@ -25,12 +20,10 @@ namespace GenderAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AppSettings>(Configuration);
             services.AddMvc();
 
-            //var csvFilePath = "C:\\Lucca\\2018 - SWE Nantes\\GenderAPI\\Data\\unique_genders.csv";
-            var pythonFilePath = "C:\\Lucca\\2018 - SWE Nantes\\GenderMachine\\genderService.py";
-
-            services.AddScoped<IGenderService>((provider) => new MachineLearningService(pythonFilePath));
+            services.AddScoped<IGenderService, MachineLearningService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

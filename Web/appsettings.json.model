@@ -1,0 +1,22 @@
+﻿{
+	"Logging": {
+		"IncludeScopes": false,
+		"Debug": {
+			"LogLevel": {
+				"Default": "Warning"
+			}
+		},
+		"Console": {
+			"LogLevel": {
+				"Default": "Warning"
+			}
+		}
+	},
+	"Python": {
+		"PathToPython": "...\\python.exe",
+		"PathToGenderService": "...\\genderService.py"
+	},
+	"Csv": {
+		"PathToVocabulary": "...\\Data\\unique_genders.csv"
+	}
+}

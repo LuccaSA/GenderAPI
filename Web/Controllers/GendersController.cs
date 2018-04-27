@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GenderAPI.Domain;
-using GenderAPI.Web.Models;
+﻿using GenderAPI.Domain;
+using GenderAPI.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GenderAPI.Controllers
@@ -11,18 +7,18 @@ namespace GenderAPI.Controllers
     [Route("api/[controller]")]
     public class GendersController : Controller
     {
-        private IGenderService _firstNamesDictionary;
+        private IGenderService _genderService;
 
-        public GendersController(IGenderService firstNamesDictionary)
+        public GendersController(IGenderService genderService)
         {
-            _firstNamesDictionary = firstNamesDictionary;
+            _genderService = genderService;
         }
 
         // GET api/gender
         [HttpGet]
         public Gender Get(string firstName)
         {
-            return new Gender(_firstNamesDictionary, firstName);
+            return new Gender(_genderService, firstName);
         }
     }
 }
