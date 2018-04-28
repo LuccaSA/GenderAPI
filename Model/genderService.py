@@ -2,9 +2,10 @@ import os
 import sys
 import tensorflow as tf
 import numpy as np
+os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
 # Define hyper parameters
-fc1_size = 128
+fc1_size = 256
 
 # Define placholders
 inputs = tf.placeholder(shape=(None, 40), name="inputs", dtype=tf.float32)
@@ -47,7 +48,7 @@ with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
 
     current_path = os.path.dirname(os.path.realpath(__file__))
-    saver.restore(sess, current_path + "/model_fc128.ckpt")
+    saver.restore(sess, current_path + "/model_fc256.ckpt")
         
     X_ASK = [ encode(sys.argv[1]) ]
     
@@ -59,4 +60,12 @@ with tf.Session() as sess:
                                            
            
 
-    print(pred[0][0])
+    boyperc = pred[0][0][0]
+    
+    print()
+
+    if (boyperc > 0.5):
+        print("C'est un garçon à %d %%" % int(100 * pred[0][0][0]))
+
+    if (boyperc < 0.5):
+        print("C'est une fille à %d %%" % int(100 * pred[0][0][1]))

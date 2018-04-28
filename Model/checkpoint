@@ -1,2 +1,2 @@
-model_checkpoint_path: "model_fc128.ckpt"
-all_model_checkpoint_paths: "model_fc128.ckpt"
+model_checkpoint_path: "model_fc256.ckpt"
+all_model_checkpoint_paths: "model_fc256.ckpt"

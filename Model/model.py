@@ -1,11 +1,12 @@
 import tensorflow as tf
 import numpy as np
+import matplotlib.pyplot as plt
 
 # Define hyper parameters
-epochs = 20
+epochs = 200
 batch_size = 2000
-epsilon = 0.01
-fc1_size = 128
+epsilon = 0.006
+fc1_size = 256
 
 # Read dataset
 X_TRAIN = np.load("./npy/X_TRAIN.npy")
@@ -42,6 +43,8 @@ optimizer = tf.train.AdamOptimizer(epsilon).minimize(loss)
 # accuray
 accuracy = tf.reduce_mean(tf.cast(tf.equal(labels, predictions), dtype=tf.float32))
 
+saver = tf.train.Saver(max_to_keep=1)
+
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
 
@@ -63,11 +66,6 @@ with tf.Session() as sess:
                                      inputs: X_TRAIN[train_step * batch_size:(train_step + 1) * batch_size],
                                      labels: Y_TRAIN[train_step * batch_size:(train_step + 1) * batch_size]
                                            })
-            # la, pre = sess.run([labels, predictions],
-                                 # feed_dict={
-                                     # inputs: X_TRAIN[train_step * batch_size:(train_step + 1) * batch_size],
-                                     # labels: Y_TRAIN[train_step * batch_size:(train_step + 1) * batch_size]
-                                           # })
                                            
             train_acc+=ac
             train_loss+=lo
@@ -95,18 +93,32 @@ with tf.Session() as sess:
 
         print(test_acc/nb_test_steps)
 
-    # #Validation
-    # val_acc = 0
-    # val_loss = 0
-    # nb_val_steps = int(len(X_VAL) / batch_size)
-    # for val_step in range(int(len(X_VAL) / batch_size)):
-        # print("running validation batch %d" % val_step)
-        # l, acc = sess.run([loss, accuracy],
-							 # feed_dict={
-								# inputs: X_VAL[val_step * batch_size:(val_step + 1) * batch_size],
-								# labels: Y_VAL[val_step * batch_size:(val_step + 1) * batch_size]
-							 # })
-        # val_acc += acc
-        # val_loss += l
+    #Validation
+    val_acc = 0
+    val_loss = 0
+    nb_val_steps = int(len(X_VAL) / batch_size)
+    for val_step in range(int(len(X_VAL) / batch_size)):
+        print("running validation batch %d" % val_step)
+        l, acc = sess.run([loss, accuracy],
+							 feed_dict={
+								inputs: X_VAL[val_step * batch_size:(val_step + 1) * batch_size],
+								labels: Y_VAL[val_step * batch_size:(val_step + 1) * batch_size]
+							 })
+        val_acc += acc
+        val_loss += l
 
-    # print(val_acc/nb_val_steps)
+    print(val_acc/nb_val_steps)
+    
+    saver.save(sess, "./model_fc256.ckpt")
+    
+    # Plot losses
+    plt.plot(range(len(test_losses)), test_losses, label="test")
+    plt.plot(range(len(train_losses)), train_losses, label="train")
+    plt.legend()
+    plt.show()
+
+    # Plot accuracies
+    plt.plot(range(epochs), test_accuracies, label="test")
+    plt.plot(range(epochs), train_accuracies, label="train")
+    plt.legend()
+    plt.show()
