@@ -60,12 +60,4 @@ with tf.Session() as sess:
                                            
            
 
-    boyperc = pred[0][0][0]
-    
-    print()
-
-    if (boyperc > 0.5):
-        print("C'est un garçon à %d %%" % int(100 * pred[0][0][0]))
-
-    if (boyperc < 0.5):
-        print("C'est une fille à %d %%" % int(100 * pred[0][0][1]))
+    print(pred[0][0])
