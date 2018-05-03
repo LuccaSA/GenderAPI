@@ -8,12 +8,12 @@ os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 fc1_size = 256
 
 # Define placholders
-inputs = tf.placeholder(shape=(None, 40), name="inputs", dtype=tf.float32)
+inputs = tf.placeholder(shape=(None, 40, 27), name="inputs", dtype=tf.float32)
 
 # Layer fully connected
-fc1_w = tf.get_variable(name="weights_fc1", shape=(40, fc1_size), dtype=tf.float32)
+fc1_w = tf.get_variable(name="weights_fc1", shape=(40 * 27, fc1_size), dtype=tf.float32)
 fc1_b = tf.get_variable(name="bias_fc1", shape=(fc1_size), dtype=tf.float32)
-fc1 = tf.nn.relu(tf.matmul(tf.reshape(inputs, shape=(-1, 40)), fc1_w) + fc1_b)
+fc1 = tf.nn.relu(tf.matmul(tf.reshape(inputs, shape=(-1, 40 * 27)), fc1_w) + fc1_b)
 
 # output layer : 128 => 2
 output_w = tf.get_variable(name="weights", shape=(fc1_size, 2))
@@ -45,7 +45,9 @@ def encode(input):
         v = 1 + ord(c) - ord('A')
         if v < 0 or v > 26:
             v = 0
-        result.append(v)
+        one_hot = np.zeros(27)
+        one_hot[v] = 1
+        result.append(one_hot.tolist())
     return result
 
 if len(sys.argv) != 2:
@@ -56,7 +58,7 @@ with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
 
     current_path = os.path.dirname(os.path.realpath(__file__))
-    saver.restore(sess, current_path + "/model_fc256_ci_ai.ckpt")
+    saver.restore(sess, current_path + "/model_fc256_ci_ai_matrices.ckpt")
         
     X_ASK = [ encode(sys.argv[1]) ]
     

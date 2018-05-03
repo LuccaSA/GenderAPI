@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 # Define hyper parameters
 epochs = 100
-batch_size = 2000
-epsilon = 0.006
+batch_size = 1000
+epsilon = 0.003
 fc1_size = 256
 
 # Read dataset

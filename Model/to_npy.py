@@ -23,7 +23,7 @@ def encode(input):
     result = []
     for c in fnameAdj:
         v = 1 + ord(c) - ord('A')
-        if v < 0:
+        if v < 0 or v > 26:
             v = 0
         result.append(v)
     return result
