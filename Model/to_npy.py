@@ -4,13 +4,21 @@ import sys
 
 DATA_PATH = './data/'
 
-# Fréd => FRÈD => 6 17 ...
+# Fréd => FRED => 6 17 ...
 def encode(input):
     maxFnameLen = 40 # nb de caractères max dans le prénom
+    lettersToReplace = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÌÍÎÏìíîïÙÚÛÜùúûüÿÑñÇç";
+    replacementletters = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeIIIIiiiiUUUUuuuuyNnCc";
+
     # si prénom trop long on fait planter
     if (len(input) > maxFnameLen):
         print("Too big name detected : " + input)
         return;
+        
+    #Accent insensitive
+    for i in range(0, len(lettersToReplace)):
+        input = input.replace(lettersToReplace[i], replacementletters[i])
+        
     fnameAdj = '{0: <{l}}'.format(input[::], l=maxFnameLen)[0:maxFnameLen].upper()
     result = []
     for c in fnameAdj:
