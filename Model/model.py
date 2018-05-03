@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Define hyper parameters
-epochs = 200
+epochs = 100
 batch_size = 2000
 epsilon = 0.006
 fc1_size = 256

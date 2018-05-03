@@ -29,7 +29,7 @@ def save_npy(name_of_set, X, Y):
 with open(DATA_PATH + 'genders.csv') as csvfile:
     X = []
     Y = []
-    spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+    spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
     for row in spamreader:
         x = row[0] # Fréd
         y = row[1] # Mr

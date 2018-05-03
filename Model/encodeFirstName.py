@@ -1,14 +1,22 @@
-  #fname = 'JAHNAVI'
-fname = "Fréd"
-maxFnameLen = 20
-maxEthLen = 14
-#fnameAdj = '{0: <{l}}'.format(fname[::-1], l=maxFnameLen)[0:maxFnameLen].upper()
-fnameAdj = '{0: <{l}}'.format(fname[::], l=maxFnameLen)[0:maxFnameLen].upper()
-sys.stdout. write (fnameAdj + ' ')
+import sys
+
+input = sys.argv[1]
+maxFnameLen = 40 # nb de caractères max dans le prénom
+lettersToReplace = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÌÍÎÏìíîïÙÚÛÜùúûüÿÑñÇç";
+replacementletters = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeIIIIiiiiUUUUuuuuyNnCc";
+
+for i in range(0, len(lettersToReplace)):
+    input = input.replace(lettersToReplace[i], replacementletters[i])
+
+# si prénom trop long on fait planter
+if (len(input) > maxFnameLen):
+    print("Too big name detected : " + input)
+    sys.exit()
+fnameAdj = '{0: <{l}}'.format(input[::], l=maxFnameLen)[0:maxFnameLen].upper()
+result = []
 for c in fnameAdj:
     v = 1 + ord(c) - ord('A')
     if v < 0:
         v = 0
-    #datF. write (str(ord(c) - 32))
-    sys.stdout.write (str(v) + ' ')
-sys.stdout.write ('\n')
+    result.append(v)
+print(result)
