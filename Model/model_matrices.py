@@ -109,7 +109,7 @@ with tf.Session() as sess:
 
     print(val_acc/nb_val_steps)
     
-    saver.save(sess, "./model_fc256_ci_ai_matrices.ckpt")
+    # saver.save(sess, "./model_fc256_ci_ai_matrices.ckpt")
     
     # Plot losses
     plt.plot(range(len(test_losses)), test_losses, label="test")

@@ -1,2 +1,2 @@
-model_checkpoint_path: "model_fc256_ci_ai.ckpt"
-all_model_checkpoint_paths: "model_fc256_ci_ai.ckpt"
+model_checkpoint_path: "model_rnn_ci_ai_matrices.ckpt"
+all_model_checkpoint_paths: "model_rnn_ci_ai_matrices.ckpt"
