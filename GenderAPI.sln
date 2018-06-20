@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenderAPI.Web", "Web\GenderAPI.Web.csproj", "{9EAF8D89-EE67-4461-BADB-FE6A9B30EB34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenderAPI.Tests", "GenderAPI.Tests\GenderAPI.Tests.csproj", "{8ECD7321-E743-4EC8-B9DA-555F207001E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenderAPI.Infra", "GenderAPI.Infra\GenderAPI.Infra.csproj", "{ACCFBF43-1955-496F-916B-54FCF4C540B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenderAPI.Domain", "GenderAPI.Domain\GenderAPI.Domain.csproj", "{EB36B097-F432-41C1-AEF6-C42A6B5D2515}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EAF8D89-EE67-4461-BADB-FE6A9B30EB34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EAF8D89-EE67-4461-BADB-FE6A9B30EB34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EAF8D89-EE67-4461-BADB-FE6A9B30EB34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EAF8D89-EE67-4461-BADB-FE6A9B30EB34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ECD7321-E743-4EC8-B9DA-555F207001E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ECD7321-E743-4EC8-B9DA-555F207001E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ECD7321-E743-4EC8-B9DA-555F207001E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ECD7321-E743-4EC8-B9DA-555F207001E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACCFBF43-1955-496F-916B-54FCF4C540B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACCFBF43-1955-496F-916B-54FCF4C540B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACCFBF43-1955-496F-916B-54FCF4C540B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACCFBF43-1955-496F-916B-54FCF4C540B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB36B097-F432-41C1-AEF6-C42A6B5D2515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB36B097-F432-41C1-AEF6-C42A6B5D2515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB36B097-F432-41C1-AEF6-C42A6B5D2515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB36B097-F432-41C1-AEF6-C42A6B5D2515}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {538BA5F1-C09A-472B-95D4-01FD7519163E}
+	EndGlobalSection
+EndGlobal
